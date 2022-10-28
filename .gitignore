@@ -8,8 +8,7 @@
 # Dependency directories
 /node_modules
 
-# Compiled code
-/lib
+
 
 # IntelliJ
 .idea/
