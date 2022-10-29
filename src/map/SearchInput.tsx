@@ -20,6 +20,7 @@ export class SearchInput extends React.PureComponent<Props> {
     this.props.onChange(this.autoComplete.getPlace())
 
     if (this.searchInputRef.current) {
+      console.log(this.searchInputRef.current)
       this.searchInputRef.current.value = ''
     }
   }
