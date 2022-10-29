@@ -48,7 +48,7 @@ export class SearchInput extends React.PureComponent<Props> {
         <TextInput
           name="place"
           ref={this.searchInputRef}
-          placeholder="textSearch for place or address"
+          placeholder="test1Search for place or address"
           padding={4}
         />
       </WrapperContainer>
