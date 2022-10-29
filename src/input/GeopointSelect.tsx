@@ -32,7 +32,10 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
     if (!place.geometry?.location) {
       return
     }
-
+    console.log("handlePlaceChange()");
+    console.log(place);
+    console.log(place.address_components)
+    console.log(place.adr_address)
     this.setValue(place.geometry.location)
   }
 
