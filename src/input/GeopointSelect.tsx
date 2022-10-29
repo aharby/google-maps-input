@@ -9,7 +9,7 @@ const fallbackLatLng: LatLng = {lat: 40.7058254, lng: -74.1180863}
 interface SelectProps {
   api: typeof window.google.maps
   value?: Geopoint
-  onChange?: (latLng: google.maps.LatLng) => void
+  onChange?: (latLng: google.maps.LatLng, adr: string) => void
   defaultLocation?: LatLng
   defaultZoom?: number
 }
@@ -29,37 +29,37 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
   }
 
   handlePlaceChanged = (place: google.maps.places.PlaceResult) => {
-    if (!place.geometry?.location) {
+    if (!place.geometry?.location || !place.formatted_address) {
       return
     }
     console.log("handlePlaceChange()");
     console.log(place);
     console.log(place.address_components)
     console.log(place.adr_address)
-    this.setValue(place.geometry.location)
+    this.setValue(place.geometry.location,place.formatted_address)
   }
 
-  handleMarkerDragEnd = (event: google.maps.MapMouseEvent) => {
-    if (event.latLng) this.setValue(event.latLng)
-  }
+  // handleMarkerDragEnd = (event: google.maps.MapMouseEvent) => {
+  //   if (event.latLng) this.setValue(event.latLng)
+  // }
 
-  handleMapClick = (event: google.maps.MapMouseEvent) => {
-    if (event.latLng) this.setValue(event.latLng)
-  }
+  // handleMapClick = (event: google.maps.MapMouseEvent) => {
+  //   if (event.latLng) this.setValue(event.latLng)
+  // }
 
-  setValue(geoPoint: google.maps.LatLng) {
+  setValue(geoPoint: google.maps.LatLng, adr: string) {
     if (this.props.onChange) {
-      this.props.onChange(geoPoint)
+      this.props.onChange(geoPoint, adr)
     }
   }
 
   render() {
-    const {api, defaultZoom, value, onChange} = this.props
+    const {api, defaultZoom, value} = this.props
     return (
       <GoogleMap
         api={api}
         location={this.getCenter()}
-        onClick={this.handleMapClick}
+        // onClick={this.handleMapClick}
         defaultZoom={defaultZoom}
       >
         {(map) => (
@@ -70,7 +70,7 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
                 api={api}
                 map={map}
                 position={value}
-                onMove={onChange ? this.handleMarkerDragEnd : undefined}
+                //onMove={onChange ? this.handleMarkerDragEnd : undefined}
               />
             )}
           </>

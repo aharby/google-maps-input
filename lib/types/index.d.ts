@@ -15,6 +15,7 @@ export interface Geopoint {
     lat: number;
     lng: number;
     alt?: number;
+    adr: string;
 }
 export interface GeopointSchemaType extends ObjectSchemaType {
     diffComponent?: DiffComponent<ObjectDiff<Geopoint>> | DiffComponentOptions<ObjectDiff<Geopoint>>;
