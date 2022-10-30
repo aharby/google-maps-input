@@ -1,4 +1,22 @@
-# @sanity/google-maps-input
+
+# @sanity/google-maps-input [Fork]
+
+```diff
+
++ This is for those who want to have the full address information besides the coordinates.
++so the input would be a normal geopoint, where the output is a geopoint plus formated address
++and address components provided by google places api.
+
++ This could be used for saving adresses in sanity.
+
++ It is quick and dirty, probably because I don't know better but it works and it's very useful if that's what you're looking for. 
+
+- Disabled: Setting the location by dragging or clicking on the map.
+```
+## Installation
+```
+npm install git+https://github.com/aharby/google-maps-input.git
+```
 
 > **NOTE**
 >
@@ -21,6 +39,9 @@ These will be re-added well before Studio V3 GA.
 
 ## Installation
 
+[here](https://github.com/aharby/google-maps-input/edit/main/README.md#installation)
+
+<del>
 In your studio folder, run:
 
 ```
@@ -32,7 +53,7 @@ or
 ```
 yarn add @sanity/google-maps-input@studio-v3
 ```
-
+</del>
 ## Usage
 
 Add it as a plugin in sanity.config.ts (or .js), with a valid [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key):
