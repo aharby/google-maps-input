@@ -9,7 +9,7 @@ const fallbackLatLng: LatLng = {lat: 40.7058254, lng: -74.1180863}
 interface SelectProps {
   api: typeof window.google.maps
   value?: Geopoint
-  onChange?: (latLng: google.maps.LatLng, adr: string) => void
+  onChange?: (latLng: google.maps.LatLng, formatted_address: string, address_components:google.maps.GeocoderAddressComponent[]) => void
   defaultLocation?: LatLng
   defaultZoom?: number
 }
@@ -29,14 +29,14 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
   }
 
   handlePlaceChanged = (place: google.maps.places.PlaceResult) => {
-    if (!place.geometry?.location || !place.formatted_address) {
+    if (!place.geometry?.location || !place.formatted_address || !place.address_components) {
       return
     }
     console.log("handlePlaceChange()");
     console.log(place);
     console.log(place.address_components)
     console.log(place.adr_address)
-    this.setValue(place.geometry.location,place.formatted_address)
+    this.setValue(place.geometry.location,place.formatted_address, place.address_components)
   }
 
   // handleMarkerDragEnd = (event: google.maps.MapMouseEvent) => {
@@ -47,9 +47,9 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
   //   if (event.latLng) this.setValue(event.latLng)
   // }
 
-  setValue(geoPoint: google.maps.LatLng, adr: string) {
+  setValue(geoPoint: google.maps.LatLng, formatted_address: string, address_components: google.maps.GeocoderAddressComponent[]) {
     if (this.props.onChange) {
-      this.props.onChange(geoPoint, adr)
+      this.props.onChange(geoPoint, formatted_address,address_components)
     }
   }
 
