@@ -17,6 +17,12 @@
 ```
 npm install git+https://github.com/aharby/google-maps-input.git
 ```
+## preview
+### on sanity studio
+![sanity studio preview](https://user-images.githubusercontent.com/29491809/198886716-25fc0898-027e-416c-8fef-6c74ea7cc678.png)
+
+### returned object
+![geopoint output example](https://user-images.githubusercontent.com/29491809/198886583-f005b3f4-4049-4cb3-b351-06f5a2598f25.png)
 
 > **NOTE**
 >
