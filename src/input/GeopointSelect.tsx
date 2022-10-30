@@ -32,20 +32,8 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
     if (!place.geometry?.location || !place.formatted_address || !place.address_components) {
       return
     }
-    console.log("handlePlaceChange()");
-    console.log(place);
-    console.log(place.address_components)
-    console.log(place.adr_address)
     this.setValue(place.geometry.location,place.formatted_address, place.address_components)
   }
-
-  // handleMarkerDragEnd = (event: google.maps.MapMouseEvent) => {
-  //   if (event.latLng) this.setValue(event.latLng)
-  // }
-
-  // handleMapClick = (event: google.maps.MapMouseEvent) => {
-  //   if (event.latLng) this.setValue(event.latLng)
-  // }
 
   setValue(geoPoint: google.maps.LatLng, formatted_address: string, address_components: google.maps.GeocoderAddressComponent[]) {
     if (this.props.onChange) {
@@ -59,7 +47,6 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
       <GoogleMap
         api={api}
         location={this.getCenter()}
-        // onClick={this.handleMapClick}
         defaultZoom={defaultZoom}
       >
         {(map) => (
@@ -70,7 +57,6 @@ export class GeopointSelect extends React.PureComponent<SelectProps> {
                 api={api}
                 map={map}
                 position={value}
-                //onMove={onChange ? this.handleMarkerDragEnd : undefined}
               />
             )}
           </>
