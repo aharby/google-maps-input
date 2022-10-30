@@ -12,7 +12,8 @@ export interface Geopoint {
   lat: number
   lng: number
   alt?: number
-  adr: string
+  formatted_address: string
+  address_components: google.maps.GeocoderAddressComponent[]
 }
 
 export interface GeopointSchemaType extends ObjectSchemaType {

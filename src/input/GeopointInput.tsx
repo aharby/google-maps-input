@@ -116,6 +116,7 @@ class GeopointInput extends React.PureComponent<GeopointInputProps, InputState> 
       <>
         {value && (
           <ChangeIndicator path={path} isChanged={changed} hasFocus={!!focused}>
+            <p><strong>{value.formatted_address}</strong></p>
             <PreviewImage src={getStaticImageUrl(value, config.apiKey)} alt="Map location" />
           </ChangeIndicator>
         )}
